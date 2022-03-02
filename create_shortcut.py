@@ -5,6 +5,29 @@ import os
 # from pathlib import Path
 from win32com.client import Dispatch
 import runtime
+import tkinter as tk
+
+window = tk.Tk()
+label = tk.Label(text = 'Velkommen til snarvei skaperen')
+label.pack()
+
+oppdragsnr_label = tk.Label(text = 'Skriv inn oppdragsnummer')
+oppdragsnr_label.pack()
+oppdragsnr_entry = tk.Entry(width = 60)
+oppdragsnr_entry.pack()
+oppdragsnr_button = tk.Button(text = 'Bekreft')
+oppdragsnr_button.pack()
+
+beskrivelse_label = tk.Label(text = 'Beskrivende tekst av oppdraget')
+beskrivelse_label.pack()
+beskrivelse_entry = tk.Entry(width = 60)
+beskrivelse_entry.pack()
+beskrivelse_button = tk.Button(text = 'Bekreft')
+beskrivelse_button.pack() 
+
+window.mainloop()
+# Variable
+print(beskrivelse_entry.get())
 
 # Variable
 info = 0
