@@ -16,8 +16,8 @@ currenFilePath = os.path.dirname(__file__)
 os.chdir(currenFilePath)
 cwd = Path.cwd() #Can be changed to other dir with os.chdir()
 filename = 'logfile.txt'
-filepath = Path(cwd/filename)
-# filepath = Path(cwd/'logfiles'/filename).mkdir(parents=True, exist_ok=True) # If its needed to store the logfile in a childe folder
+#filepath = Path(cwd/filename)
+filepath = Path(cwd/'logfiles'/filename).mkdir(parents=True, exist_ok=True) # If its needed to store the logfile in a childe folder
 
 # Load the shortcuts
 with open("shortcuts.json", "r", encoding="utf-8-sig") as f:
@@ -28,7 +28,7 @@ def logTime(timestamp, filename_ending ='', comment = ''):
     if filename_ending:
         filename = 'logfile_' + str(filename_ending) + '.txt'
             
-    filepath = Path(cwd/filename)
+    #filepath = Path(cwd/filename)
     
     if not Path(filepath).is_file():
         filemode = 'w'
