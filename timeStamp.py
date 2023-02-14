@@ -16,8 +16,8 @@ currenFilePath = os.path.dirname(__file__)
 os.chdir(currenFilePath)
 cwd = Path.cwd() #Can be changed to other dir with os.chdir()
 filename = 'logfile.txt'
-#filepath = Path(cwd/filename)
-filepath = Path(cwd/'logfiles'/filename).mkdir(parents=True, exist_ok=True) # If its needed to store the logfile in a childe folder
+filepath = Path(cwd/filename)
+# filepath = Path(cwd/'logfiles'/filename).mkdir(parents=True, exist_ok=True) # If its needed to store the logfile in a childe folder
 
 # Load the shortcuts
 with open("shortcuts.json", "r", encoding="utf-8-sig") as f:
@@ -28,7 +28,7 @@ def logTime(timestamp, filename_ending ='', comment = ''):
     if filename_ending:
         filename = 'logfile_' + str(filename_ending) + '.txt'
             
-    #filepath = Path(cwd/filename)
+    filepath = Path(cwd/filename)
     
     if not Path(filepath).is_file():
         filemode = 'w'
@@ -91,13 +91,13 @@ def write_to_file(textlst, filename):
 count = 0
 
 def timeregistrering():
-    webbrowser.open('https://hours.norconsult.com/secure/web/')
+    webbrowser.open('https://hours.norconsult.com/')
 
 # Logic of the program
 try:
     while True:
         if count == 0:
-            filename_ending = input('If filename needs ending write it here, else hit ENTER (exit or ctrl-c to finish): ')
+            filename_ending = input('Ending for logfile can be added here(exit or ctrl-c to finish): ')
             datestamp, timestamp = times()
             
             if filename_ending.lower() == 'exit':    
@@ -107,23 +107,23 @@ try:
             elif filename_ending.lower() in short:
                 filename_ending = short[filename_ending]
 
-            comment =  input('\nIf a comment for the timestamp is needed write it here, else hit ENTER: ')
+            comment =  input('\nComment for the timestamp can be added here: ')
             if comment.lower() in short:
                 comment =  short[comment]
             
-            print(f"\nThis {timestamp} has been added to the log file")
+            print(f"\n{timestamp} has been added to the log file")
             count =+ 1
 
         else:
             
-            comment = input('\nYou can keep adding timestamps with comment to the same file (exit or ctrl-c to finish): ')
+            comment = input('\nKeep adding timestamps with or without comments to the file (exit or ctrl-c to finish): ')
             datestamp, timestamp = times()
             if comment.lower() == 'exit':    
                 break
             elif comment.lower() in short:
                 comment =  short[comment]
             
-            print(f"\nThis {timestamp} has been added to the log filed")
+            print(f"\n{timestamp} has been added to the log filed")
 
             
         filename = logTime(timestamp, filename_ending, comment)
@@ -150,8 +150,12 @@ finally:
         summation_text = f'you have used {time}\ton {comment}'
         print(summation_text)
         write_to_file(summation_text,filename)
-    print(f'\nTotal time used: {str(total_time)}')     
+    
+    total_time_text = f'\nTotal time used: {str(total_time)}'
+    write_to_file(total_time_text,filename)
+    print(total_time_text)     
     print('\nThank you for using chTools!')
+    
     timeregistrering()
    
 input()
