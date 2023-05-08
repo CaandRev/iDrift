@@ -12,8 +12,8 @@ import os
 import webbrowser
 
 #Get Current Working Directorie
-currenFilePath = os.path.dirname(__file__)
-os.chdir(currenFilePath)
+# currenFilePath = os.path.dirname(__file__)
+# os.chdir(currenFilePath)
 cwd = Path.cwd() #Can be changed to other dir with os.chdir()
 filename = 'logfile.txt'
 filepath = Path(cwd/filename)
