@@ -8,12 +8,9 @@
 import datetime as dt
 from pathlib import Path
 import json
-import os
 import webbrowser
 
 #Get Current Working Directorie
-# currenFilePath = os.path.dirname(__file__)
-# os.chdir(currenFilePath)
 cwd = Path.cwd() #Can be changed to other dir with os.chdir()
 filename = 'logfile.txt'
 filepath = Path(cwd/filename)
@@ -51,7 +48,7 @@ def times():
 
     return datestamp, timestamp
 
-# Calculates how much time used on each pro
+# Calculates how much time used on each project
 def summary(filename):
     sumdict = {}
     count = 0
@@ -126,10 +123,8 @@ try:
             print(f"\n{timestamp} has been added to the log filed")
 
             
-        filename = logTime(timestamp, filename_ending, comment)
-        
+        filename = logTime(timestamp, filename_ending, comment)        
                                                       
-       
 except: 
     KeyboardInterrupt
     
@@ -154,7 +149,7 @@ finally:
     total_time_text = f'\nTotal time used: {str(total_time)}'
     write_to_file(total_time_text,filename)
     print(total_time_text)     
-    print('\nThank you for using chTools!')
+    print('\nThanks for using the program!')
     
     timeregistrering()
    
